@@ -31,7 +31,7 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-         it('url defined', function() {
+         it('has urls defined', function() {
            allFeeds.forEach(function(feed) {
               expect(feed.url).toBeDefined();
               expect(feed.url).not.toBe('');
@@ -43,7 +43,7 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
-         it('name defined', function() {
+         it('has names defined', function() {
            allFeeds.forEach(function(feed) {
               expect(feed.name).toBeDefined();
               expect(feed.url).not.toBe('');
@@ -60,7 +60,7 @@ describe('The menu', function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-         it('menu element is hidden by default', function() {
+         it('element is hidden by default', function() {
            expect($(document.body).hasClass('menu-hidden')).toBe(true);
          });
 
@@ -69,6 +69,15 @@ describe('The menu', function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+          it('changes visibility on click', function() {
+            var menuIcon = $('.menu-icon-link');
+            //first click;
+            menuIcon.trigger('click');
+            expect($(document.body).hasClass('menu-hidden')).toBe(false);
+            // //second click
+            menuIcon.trigger('click');
+            expect($(document.body).hasClass('menu-hidden')).toBe(true);
+          });
 });
 
     /* TODO: Write a new test suite named "Initial Entries" */
